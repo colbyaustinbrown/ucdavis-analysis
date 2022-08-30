@@ -1,0 +1,18 @@
+%! TeX root = ../analysis-main.tex
+
+\problem{1}{Prove that every metric subspace of a separable metric space is separable.}
+
+\begin{solution}{Esha Datta, James Hughes, Edgar Jaramillo Rodriguez, Jeonghoon Kim, Van Vinh Nguyen, Qianhui Wan}
+        Let $(X, d)$ be a separable metric space and let $S\subseteq X$ be a metric subspace of $X$. 
+
+        Since $X$ is separable, there exists a countable dense subset $\{x_i\}_{i=1}^\infty$ such that \[ X\subseteq \bigcup_{i=1}^{\infty} B_\epsilon(x_i) \] for any $\epsilon>0$.
+
+        In particular, $S$ is also contained in this union.
+        For each $x_i$ and every $n\in \naturals$ with $B_{1/n}(x_i)\cap S\neq 0,$ choose $s_j\in B_{1/n}(x_i)\cap S$.
+        We claim that $\{s_j\}_{j=1}^\infty$ is a countable dense subset of $S$.
+        Indeed, $\{s_j\}_{j=1}^\infty$ is countable because it is a countable union of countable sets.
+        Moreover, for any $s\in S,$ we know that there exists $x_i$ such that $d(x_i,s)<\epsilon/2$ because $\{x_i\}$ is dense in $X$.
+        Choosing $s_j\in \{s_j\}$ such that $d(s_j,x_i)<\epsilon/2$ then gives us that \[ d(s_j, s)\leq d(s_j, x_i)+d(x_i, s)<\epsilon/2+\epsilon/2=\epsilon. \]
+        Thus, we have produced a countable, dense subset of $S$ and it follows that $S$ is separable.
+\end{solution}
+

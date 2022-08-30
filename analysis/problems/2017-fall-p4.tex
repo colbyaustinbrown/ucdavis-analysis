@@ -1,0 +1,38 @@
+%! TeX root = ../analysis-main.tex
+
+\problem{3}{
+        Prove or disprove the following statement:
+        If $f \in C^{\infty}([0,1])$ is a smooth function, then there exists a sequence of polynomials $(p_n)$ on $[0,1]$ such that $p^{(k)}_n \to f^{(k)}$ uniformly on $[0,1]$ as $n \to \infty$ for every integer $k \geq 0$.
+        Here $f^{(k)}$ denotes the $k$-th derivative of $f$.
+}
+\begin{solution}{Esha Datta, James Hughes, Edgar Jaramillo Rodriguez, Jeonghoon Kim, Van Vinh Nguyen, Qianhui Wan}
+        The statement is true.
+        Let $\mathcal P = \mathcal P([0,1])$ be the space of polynomials on $[0,1]$ and for $k\geq 0$ let $C^k([0,1])$ be the space of functions $f$ such that $f^{(i)}$ exists and is continuous for all $i= 0,\ldots, k$.
+        Equip $C^k([0,1])$ with its usual norm:
+        \[ \lVert f \rVert_{C^k} = \sum_{i=0}^k \lVert f^{(i)}\rVert_{\infty}. \]
+        We first show that $\mathcal P$ is dense in $C^k([0,1])$ for all $k \geq 0$.
+        Fix $\epsilon >0$ and let $f \in C^k([0,1])$ be arbitrary.
+        Then $f^{(k)} \in C([0,1])$ so by the Stone-Weierstrass Theorem there exists a polynomial $p_k \in \mathcal P$ such that $||f^{(k)} - p_k||_\infty < \epsilon/k$.
+        Now consider the function $p_{k-1}$ given by
+        \[ p_{k-1}(x) = f^{(k-1)}(0) + \int_0^x p_k(y) dy. \]
+        Note $p_{k-1} \in \mathcal P$ and by the fundamental theorem of calculus $p_{k-1}^{(1)} = p_{k}$.
+        Next, note that for any $x\in  [0,1]$ we have:
+        \begin{align*}
+            |f^{(k-1)}(x)- p_{k-1}(x)| 
+            &= \Big|f^{(k-1)}(0) + \int_0^x f^{(k)}(y) dy - \Big( f^{(k-1)}(0) + \int_0^x p_k(y) dy \Big) \Big| \\
+            &\leq \int_0^x |f^{(k)}(y) - p_k(y)| dy \\
+            &\leq \int_0^1 ||f^{(k)} - p_k||_\infty dy \\
+            &\leq \epsilon/k.
+        \end{align*}
+        Hence $||f^{(k-1)} - p_{k-1}||_{C^1} \leq 2\epsilon /k$. 
+        Now repeat this process, at each step defining a new polynomial $p_i$ so that
+        \[ p_i(x) = f^{(i)}(0)  + \int_0^x p_{i+1}(y)dy. \]
+        It follows from the same argument as above that $||f - p_0||_{C^k} \leq \epsilon$.
+        Since $\epsilon$ was taken to be arbitrary we have that $\mathcal P$ is dense in $C^k([0,1])$. 
+
+        Returning to the original problem, let $f \in C^\infty([0,1])$.
+        For $k \geq 0$, let $(p_n^k)_{n=1}^\infty \subset \mathcal P$ be a sequence such that $p_n^k \to f$ in $C^k([0,1])$, these sequences are guaranteed to exist by the prior argument.
+        Now define a ``diagonal'' sequence $(q_m)_{m=1}^\infty \subset \mathcal P$ by setting $q_m$ to be the first term from $(p_n^m)$ such that $||f - p_n^m||_{C^m} < 2^{-m}$.
+        It follows that for any fixed $k$, $||f^{(k)} - q_m^{(k)}||_\infty \to 0$ as $m\to \infty$ so $(q_m)$ is our desired sequence.
+\end{solution}
+

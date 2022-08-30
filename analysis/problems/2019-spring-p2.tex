@@ -1,0 +1,31 @@
+%! TeX root = ../analysis-main.tex
+\documentclass[../analysis-main.tex]{subfiles}
+
+\begin{document}
+
+\problem{2}{Let $S = [0,1] \times [0,1]$ and consider the space $C(S)$ of continuous complex-valued functions on $S$ equipped with the $\sup$-norm.
+Define $F \subset C(S)$ by \[ F = \{ f \in C(S) \, : \, \exists \, n \geq 1 \text{ and } g_1, \ldots, g_n \, , \, h_1, \ldots, h_n \in C([0,1]) \text{ such that } f(x, y) = \sum_{k = 1}^n g_k(x) h_k(y) \}. \]
+Show that $F$ is dense in $C(S)$.}
+
+\begin{solution}{Esha Datta, James Hughes, Edgar Jaramillo Rodriguez, Jeonghoon Kim, Van Vinh Nguyen, Qianhui Wan}
+        Let $S$ and $F$ be given as above.
+        In order to use the Stone-Weierstrass theorem, we must show that $F$ is an algebra that is nonvanishing, separates points, and for any $f\in F$, we must also have $\overline{f}\in F$.
+
+        We first note that $F$ is nonvanishing because the constant function $\chi_S\in F$. 
+
+        Next, take any $(x_1,y_1), (x_2,y_2)\in S$.
+        Without loss of generality, suppose that $x_1\neq x_2$.
+        Let $\epsilon=d(x_1,x_2)$ and denote $A=B_\epsilon/2(x_1)$ and $B=S\backslash A$.
+        Then there exists a continuous Urysohn function  $$\rho(x,y)=\frac{d(x, A)}{d(x,A)+d(x,B)}\in F$$ such that $\rho(x_1,y)=1$ and $\rho(x_2,y)=0$.
+        Thus, $F$ separates points.
+
+        Now if we examine $f(x,y)=\sum_{k=1}^n g_k(x)h_k(y)\in F,$ we can see that $\overline{f}(x,y)=\overline{\sum_{k=1}^n g_k(x)h_k(y)}=\sum_{k=1}^n \overline{g_k}(x)\overline{h_k}(y)\in F$ since $g_k(x)\in C([0,1])$ implies $\overline{g_k}(x)\in C([0,1])$.
+
+        Finally, $F$ is an algebra because $\left(\sum_{k=1}^n g_k(x)h_k(y)\right) \left(\sum_{j=1}^m g_j(x)h_j(y)\right)$ distributes, giving us another element of $F$.
+
+        Thus, by the Stone-Weierstrass theorem, $F$ is dense in $C(S)$.
+\end{solution}
+
+
+\end{document}
+

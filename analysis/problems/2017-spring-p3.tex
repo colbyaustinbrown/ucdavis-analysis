@@ -1,0 +1,20 @@
+%! TeX root = ../analysis-main.tex
+
+\chapter*{Spring 2017}
+
+\problem{2}{
+        Suppose that $(X,d)$ is a metric space such that every continuous function $f: X \to \real$ is bounded.
+        Prove that $X$ is complete.
+}
+
+\begin{solution}{Esha Datta, James Hughes, Edgar Jaramillo Rodriguez, Jeonghoon Kim, Van Vinh Nguyen, Qianhui Wan}
+        Let $(x_n)$ be a Cauchy sequence in $X$, so that $(x_n)$ converges to some $y \in \Tilde{X}$, the completion of $X$.
+        We want to show that $y \in X$, so suppose by way of contradiction that $y \notin X$.
+        Recall that the metric $d$ is a continuous function from $X \times X \to \real_{\geq 0}$.
+        Hence the function $f: X \to \real$ defined by $f(x) = d(x,y)$ is continuous.
+        What's more, since $y \notin X$ we have that $f(x) = d(x,y) \neq 0$ for all $x \in X$.
+        Thus the function $g(x) = \sfrac{1}{f(x)}$ is also a continuous function on $X$.
+        But since $x_n \to y$ we have that $d(x_n,y) \to 0$, so $g(x_n) \to \infty$, contradicting that every continuous function on $X$ is bounded.
+        Thus it must be the case that $y \in X$.
+\end{solution}
+

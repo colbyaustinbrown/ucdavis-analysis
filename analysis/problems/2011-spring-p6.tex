@@ -1,0 +1,20 @@
+%! TeX root = ../analysis-main.tex
+
+\problem{6}{
+        For $\alpha \in (0,1]$, the space of H\"older continuous functions on the interval $[0,1]$ is defined as
+        \[ C^{9,\alpha}([0,1]) = \{u \in C[0,1] : |u(x) - u(y) \leq C|x - y|^\alpha \, \, \forall x,y \in [0,1]\} \]
+        and is a Banach space when endowed with the norm
+        \[ \lVert u \rVert_{C^{0,\alpha}([0,1])} = \sup_{x \in [0,1]} |u(x)| + \sup_{x,y \in [0,1]} \frac{|u(x) - u(y)|}{|x - y|^\alpha}. \]
+        Prove that the closed unit ball $\{u \in C^{0,\alpha}([0,1]) : \lVert u \rVert_{C^{0,\alpha}([0,1])} \leq 1\}$ is a compact set in $C([0,1])$.
+}
+\begin{solution}{Esha Datta, James Hughes, Edgar Jaramillo Rodriguez, Jeonghoon Kim, Van Vinh Nguyen, Qianhui Wan}
+        Let $ U = \{u \in C^{0,\alpha}([0,1]): \lVert u \rVert_{C^{0,\alpha}([0,1])} \leq 1\}$, and let $u\in U$ be arbitrary.
+        Note that for all $x\in [0,1]$, $|u(x)| \leq \lVert u \rVert_{\infty} \leq \lVert u \rVert_{C^{0,\alpha}} \leq 1$, so $U$ is uniformly bounded.
+        Now fix $\epsilon >0$ and note that if $y\in [0,1]$ with $|x-y| < \epsilon^{1/\alpha}$ then we have:
+            \[ \frac{|u(x)-u(y)|}{|x-y|^\alpha} \leq \lVert u \rVert_{C^{0,\alpha}} \leq  1 \implies  |u(x)-u(y)| < \epsilon, \]
+        so $U$ is equicontinuous.
+        Then by the Arzel\`a-Ascoli Theorem we have that $U$ is pre-compact in $C([0,1])$.
+        Thus we only have left to show that $U$ is closed in  $C([0,1])$, which follows from \ldots
+
+\end{solution}
+

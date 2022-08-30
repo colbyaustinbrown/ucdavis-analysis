@@ -1,0 +1,35 @@
+%! TeX root = ../analysis-main.tex
+
+\problem{2}{
+        Consider the function $f : [0,1] \to \real$ defined by
+        \begin{equation*}
+                f(x) = \begin{cases}
+                        x \log x & x \in (0,1] \\
+                        0 & x = 0
+                \end{cases}
+        \end{equation*}
+        \begin{enumerate}[label=(\alph*)]
+                \item
+                        Is $f$ Lipschitz continuous on $[0,1]$?
+                \item
+                        Is $f$ uniformly continuous on $[0,1]$?
+                \item
+                        Suppose $(p_n)$ is a sequence of polynomial functions on $[0,1]$, converging uniformly to $f$.
+                        Is the set $A = \{p_n : n \geq 1\} \cup \{f\}$ equicontinuous?
+        \end{enumerate}
+}
+
+\begin{solution}{Esha Datta, James Hughes, Edgar Jaramillo Rodriguez, Jeonghoon Kim, Van Vinh Nguyen, Qianhui Wan}
+        The function is not Lipschitz, to see this note that:
+        \[ \lim_{n\to \infty} \frac{f(1/n)-f(0)}{(1/n)-0} = \lim_{n\to\infty} \log(1/n) = -\infty, \]
+        so $f$ cannot be Lipschitz.
+        However the function is continuous as by L'Hopital's rule:
+        \[ \lim_{x\to 0}x\log(x) = \lim_{n\to \infty}\frac{\log(1/n)}{(1/n)} = \lim_{n\to\infty}\frac{1}{n} = 0, \]
+        so $f$ is continuous and hence uniformly continuous since we are working over a compact set. 
+
+        For part (c.), fix $\epsilon>0$ and let $N \in \naturals$ be sufficiently large so that $\left\lVert p_n-f \right\rVert < \epsilon/3$.
+        Next, since $f$ is uniformly continuous let $\delta>0$ be sufficiently small so that if $|x-y|<\delta$ then $|f(x)-f(y)| < \epsilon/3$.
+        Then for all $n>N$, if $|x-y|<\delta$ then:
+        \[ |p_n(x)-p_n(y)| \leq |p_n(x)-f(x)|+|f(x)-f(y)|+|f(y)-p_n(y)| \leq 2 \left\lVert p_n-f \right\rVert +|f(x)-f(y)|<\epsilon \]
+        Finally, since $p_1,\ldots,p_N$ are each uniformly continuous there exist corresponding $\delta_1,\ldots, \delta_N$ so $\delta_0 = \min\{\delta, \delta_1, \ldots, \delta_N\}$ works for all the $\{p_n\} \cup \{f\}$, hence the set is equicontinuous. 
+\end{solution}

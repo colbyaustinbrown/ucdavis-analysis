@@ -1,0 +1,50 @@
+%! TeX root = ../analysis-main.tex
+
+\problem{4}{
+        Let $C_0(\real)$ denote the Banach space of continuous functions $f : \real \to \real$ such that $f(x) \to 0$ as $|x| \to \infty$, equipped with the sup-norm.
+        \begin{enumerate}[label=(\alph*)]
+                \item
+                        For $n \in \natural$, define $f_n \in C_0(\real)$ by
+                        \begin{equation*}
+                                f_n = \begin{cases}
+                                        1 & |x| \leq n \\
+                                        \frac{n}{|x|} & |x| > n
+                                \end{cases}
+                        \end{equation*}
+                        Show that $F = \{f_n : n \in \naturals\}$ is a bounded, equicontinuous subset of $C_0(\real)$, but that the sequence $(f_n)$ has no uniformly convergent subsequence.
+                        Why doesn't this example contradict the Arzel\`a-Ascoli theorem?
+                \item
+                        A family of functions $F \subset C_0(\real)$ is said to be tight if for every $\epsilon > 0$ there exists a constant $M > 0$ such that $|f(x)| < \epsilon$ for all $x \in \real$ with $|x| \geq M$ and all $f \in F$.
+                        Prove that $F \subset C_0(\real)$ is pre-compact in $C_0(\real)$ if it is bounded, equicontinuous, and tight.
+        \end{enumerate}
+}
+\begin{solution}{Esha Datta, James Hughes, Edgar Jaramillo Rodriguez, Jeonghoon Kim, Van Vinh Nguyen, Qianhui Wan}
+        \begin{enumerate}[label=(\alph*)]
+                \item
+                        We get boundededness immediately as $|f_n| \leq 1$ for all $n$.
+                        For equicontinuity let $x\in \real$ and fix $\epsilon > 0$.
+                        Since the $f_n$'s are even we may assume without loss of generality that $x \geq 0$.
+                        Hence let $N = \lfloor x \rfloor$, so $x\in [N, N+1]$.
+                        Note that for all $n > N+1$ $f_n(u) =1$ for all $|u| \leq N+2$, hence if $|u-x|<1$ then $|f(u) -f(x)|=0$.
+                        Then since $f_1, f_2, \ldots, f_{N+1}$ are continuous there exist $\delta_1, \delta_2, \ldots, \delta_{N+1}$ such that if $|u-x| <\delta_i$ then $|f_i(u)-f_i(x)| < \epsilon$ for each $i =1,2, \ldots N+1$.
+                        Hence letting $\delta = \min\{1, \delta_1, \ldots, \delta_{N+1} \}$ we have that $|u-x| <\delta \implies |f_n(u)-f_n(x)| < \epsilon$ for all $n\in \naturals$.
+                        Hence $F$ is equicontinuous. 
+
+                        To see that $F$ has no uniformly convergent subsequence note that for all $n$, $f_n(x) \to 0$ as $|x| \to \infty$ but that $f_n$ converges pointwise to 1 as $n\to \infty$.
+                        However this does not contradict Arzel\`a-Ascoli because that theorem presupposes that we are working with functions over a compact domain.
+                \item
+                        We will show that $F$ is totally bounded since that is equivalent to pre-compact in a metric space.
+                        Fix $\epsilon >0$.
+                        Because $F$ is tight there exists an $M>0$ such that $|f(x)| < \epsilon/2$ for all $|x|>M$.
+                        Now consider the set $G = \{g_n= f_n|_{[-M,M]}: n\in \naturals\} \subset C([-M,M])$.
+                        Note that $G$ is bounded and equicontinuous, this is inherited from $F$.
+                        Then since $[-M,M]$ is compact we have that $G$ is compact in $C([-M,M])$ by the Arzel\`a-Ascoli theorem. 
+
+                        Hence $G$ is totally bounded so there exist $h_1,\ldots h_N \in G$ such that $G \subseteq \bigcup_{i=1}^N B(h_i,\epsilon)$, where $B(h_i,\epsilon)$ is the ball of radius $\epsilon$ centered at $h_i$, taken with respect to the sup norm on $[-M,M]$.
+                        Now let $f_1, \ldots f_N$ be the corresponding funcitons in $F$ and consider an arbitrary $f\in F$ and $x\in \real$.
+                        Since the $h$'s form a finite $\epsilon$-net there exists some $f_i$ in our finite collection such that $|f(x)-f_i(x)| < \epsilon$ for all $|x| < M$.
+                        Then for $|x|>M$ we have that $|f(x)-f_i(x)| \leq |f(x)| +|f_i(x)| < \epsilon/2 +\epsilon/2 =\epsilon$.
+                        Hence $ \bigcup_{i=1}^N B(f_i,\epsilon)$ forms an $\epsilon$-net cover of $F$, so $F$ is totally bounded and pre-compact.
+        \end{enumerate}
+
+\end{solution}
