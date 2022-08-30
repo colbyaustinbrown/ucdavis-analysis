@@ -1,0 +1,17 @@
+%! TeX root = ../analysis-main.tex
+
+\problem{3}{
+        \begin{enumerate}
+                \item Show that if $(x_n)$ is  a sequence of elements of a Hilbert space $\mathcal{H}$ converging weakly to $x$ and $||x_n||$ also converges to $||x||$ then the sequence converges to $x$ in norm
+                \item Find a sequence of elements $(x_n)$ of a Hilbert space converging weakly to $x$ with $\lim \inf_{n \rightarrow \infty} ||x_n|| > ||x||$.
+        \end{enumerate}
+}
+
+\begin{solution}{Esha Datta, James Hughes, Edgar Jaramillo Rodriguez, Jeonghoon Kim, Van Vinh Nguyen, Qianhui Wan}
+        Suppose $x_n \rightharpoonup x$ in a Hilbert space $H$ and furthermore $\lim_{n\to\infty}\lVert x_n \rVert = \lVert x \rVert$.
+        Then observe:
+        \[ \lim_{n\to\infty}\lVert x_n-x \rVert^2 = \lim_{n\to\infty} \langle x_n-x,x_n-x\rangle = \lim_{n\to\infty}\langle x_n,x_n\rangle -2\langle x_n,x\rangle + \langle x,x\rangle = 2\lVert x \rVert^2-2\lVert x \rVert^2 = 0. \]
+        For part 2, consider the sequence $(e_n) \subseteq \ell^2(\naturals)$ where $e_i$ is the $i$-th element of the standard basis of $\ell^2(\naturals)$, so the $k$-th term of $e_i$, denoted $e_i^k$, is 0 if $k\neq i$ and 1 if $k=i$.
+        Then observe for arbitrary $y\in \ell^2(\naturals)$ we have $\langle e_n, y\rangle = y^n \to 0$ as $n\to \infty$, so $e_n\rightharpoonup 0$ but $\liminf_{n\to\infty} \lVert e_n \rVert = 1 > 0$.
+\end{solution}
+

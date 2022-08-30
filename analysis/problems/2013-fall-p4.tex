@@ -1,0 +1,22 @@
+%! TeX root = ../analysis-main.tex
+
+\problem{4}{
+        Let $H$ be a separable infinite dimensional Hilbert space and suppose that $e_1, e_2, \ldots$ is an orthonormal system in $H$.
+        Let $f_1, f_2, \ldots$ be another orthonormal system which is complete (i.e., the closure of the span of $\{f_i\}_i$ is all of $H$).
+        Prove that if $\sum_{n = 1}^\infty \lVert e_n - f_n \rVert^2 < 1$ then $\{e_1\}_i$ is also a complete orthonormal system.
+}
+
+\begin{solution}{Esha Datta, James Hughes, Edgar Jaramillo Rodriguez, Jeonghoon Kim, Van Vinh Nguyen, Qianhui Wan}
+        Let $v \in \overline{Span \{e_n\}_{n=1}^\infty}$, it suffices to show that $v =0$.
+        Note that $\langle v, e_n \rangle = 0$ for all $n\in \naturals$.
+        Also, because $\{f_n\}$ is a complete orthonormal system, we have from Parseval's Identity that:
+        \begin{equation*}
+                \lVert v \rVert^2 = \sum_{n=1}^\infty \langle v,f_n \rangle = \sum_{n=1}^\infty \langle v,f_n-e_n \rangle^2
+                \leq \sum_{n=1}^\infty \lVert v \rVert^2 \lVert e_n-f_n \rVert^2 
+                =\lVert v \rVert^2  \sum_{n=1}^\infty \lVert e_n-f_n \rVert^2,
+        \end{equation*}
+        where the inequality comes from applying Cauchy-Schwarz.
+        Now if $\lVert v \rVert$ were not zero, then dividing both sides by $\lVert v \rVert^2$ and using the given inequality would give us that $1< 1$, which is absurd.
+        So it must be the case that $\lVert v \rVert= 0 \implies v=0$, as desired.
+\end{solution}
+

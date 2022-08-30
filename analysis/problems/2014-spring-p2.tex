@@ -1,0 +1,25 @@
+%! TeX root = ../analysis-main.tex
+
+\problem{2}{
+        Show that a linear operator $T$ from a Banach space $X$ to a Hilbert space $H$ is bounded if and only if $x_n \rightharpoonup x$ imples that $Tx_n \rightharpoonup Tx$ for every weakly convergent sequence $(x_n) \subset X$.
+}
+
+\begin{solution}{Esha Datta, James Hughes, Edgar Jaramillo Rodriguez, Jeonghoon Kim, Van Vinh Nguyen, Qianhui Wan}
+
+        First suppose that $T$ is bounded and let $x_n \rightharpoonup x$ be a weakly convergent sequence in $X$.
+        We wish to show that $Tx_n \rightharpoonup Tx$.
+        Let $\phi \in H^*$ be arbitrary.
+        Since $T$ is bounded, it follows that $(\phi \circ T): X \to \mathbb R$ is a bounded linear functional.
+        Hence $(\phi \circ T) \in X^*$ which implies that $(\phi \circ T)(x_n) = \phi(Tx_n) \rightarrow (\phi \circ T)(x) = \phi(Tx)$.
+        Since $\phi$ was taken to be arbitrary it follows that $Tx_n \rightharpoonup Tx$, as desired. 
+
+        Now suppose instead that  $x_n \rightharpoonup x$ imples that $Tx_n \rightharpoonup Tx$ for every weakly convergent sequence $(x_n) \subset X$.
+        We want to show that $T$ is bounded.
+        We will use the closed graph theorem.
+        Let $(x_n, Tx_n) \subset X \times H$ be a convergent sequence on the graph of $T$, so $(x_n, Tx_n) \to (x,y)$ for some $x\in X$ and $y \in H$.
+        If we can show that $y= Tx$ then the graph of $T$ is closed and hence $T$ is bounded.
+        To show this, note that $(x_n, Tx_n) \to (x,y) \implies x_n \to x \implies x_n \rightharpoonup x \implies Tx_n \rightharpoonup Tx$.
+        However, we also have that $Tx_n \to y \implies Tx_n \rightharpoonup y$.
+        Since weak limits are unique it follows that $Tx =y$, completing the proof.
+\end{solution}
+

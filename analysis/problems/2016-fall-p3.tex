@@ -1,0 +1,18 @@
+%! TeX root = ../analysis-main.tex
+
+\problem{3}{
+        Let $y = \{a_n\}_{n=1}^\infty$ be a sequence of real-valued scalars and assume that the series $\sum_{n=1}^\infty a_n x_n$ converges for every $x \in \ell^2(\naturals)$.
+        Show that $y \in \ell^2(\naturals)$
+}
+
+\begin{solution}{Esha Datta, James Hughes, Edgar Jaramillo Rodriguez, Jeonghoon Kim, Van Vinh Nguyen, Qianhui Wan}
+        For $n\in \naturals$ define the linear functional $A_n : \ell^2(\naturals)\to \complex$ so that $A_n(x) = \sum_{k=1}^na_kx_k $.
+        Note that this is in fact a bounded linear functional as we may express $A$ in the form $Ax = \langle x, y|_n \rangle$, where $y|_n$ denotes the truncated sequence $(a_1, a_2, \ldots, a_n, 0,0, \ldots) \in \ell^2(\naturals)$.
+        From this it is also clear that $\lVert A_n \rVert = \sum_{k=1}^n |a_k|^2$. 
+
+        Now fix an arbitrary $x\in \ell^2(\naturals)$.
+        Since $\sum_{n=1}^\infty a_n x_n$ converges for every $x \in \ell^2(\naturals)$, it follows that the set of complex numbers $\{A_n(x): n\in\naturals \}$ is bounded.
+        Since this holds for all $x$, the Uniform Boundedness Theorem gives us that the set $\{\lVert A_n \rVert:n\in \naturals\}$ is bounded, i.e. that $\sup_{n\in\naturals}\lVert A_n \rVert = \sum_{k=1}^\infty |a_k|^2 < \infty$.
+        Therefore, $y\in \ell^2(\naturals)$.
+\end{solution}
+

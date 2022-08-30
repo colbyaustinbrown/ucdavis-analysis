@@ -1,0 +1,19 @@
+%! TeX root = ../analysis-main.tex
+
+\problem{1}{
+        Show that the sequence $f_n = ne^{-nx}$ does not converge weakly in $L^1([0,1])$.
+}
+
+\begin{solution}{Esha Datta, James Hughes, Edgar Jaramillo Rodriguez, Jeonghoon Kim, Van Vinh Nguyen, Qianhui Wan}
+        For some given $\epsilon >0$ consider the map $T_\epsilon : L^1([0,1])\to \real$ defined by
+        \[ T_\epsilon f = \int_0^\epsilon f(x)\,dx  = \int_0^1f(x) \chi_{[0,\epsilon]}(x)\, dx, \]
+        Note that since $\chi_{[0,\epsilon]}(x) \in L^\infty([0,1])$ this defines a linear functional on $L^1([0,1])$ (it is also not hard to verify this directly).
+        Now, observe that 
+        \[ T_\epsilon f_n = \int_0^\epsilon ne^{-nx}\,dx = 1-\frac{1}{e^{-n\epsilon}}, \]
+        so $T_\epsilon f_n \to 1$ for all $\epsilon >0$.
+        Hence if there did exist some $f \in L^1([0,1])$ such that $f_n \rightharpoonup f$ we would require that 
+        \[ \int_0^\epsilon f(x)\,dx = 1 \]
+        for all $\epsilon >0$, which is absurd (can prove via DCT).
+        Hence $f_n$ cannot converge weakly to any $f \in L^1([0,1])$.
+\end{solution}
+

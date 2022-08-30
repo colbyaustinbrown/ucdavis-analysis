@@ -1,0 +1,28 @@
+%! TeX root = ../analysis-main.tex
+
+\problem{3}{
+        Let $f$, $f_k : E \rightarrow [0, \infty)$ be non-negative, Lebesgue integrable functions on a measurable set $E \subseteq \mathbb{R}^n$.
+        If $(f_k)$ converges to $f$ pointwise a.e. and 
+        \[ \int_E f_k dx \rightarrow \int_E f dx,\]
+        show that 
+        \[ \int_E |f - f_k| dx \rightarrow 0. \]
+}
+
+\begin{solution}{Esha Datta, James Hughes, Edgar Jaramillo Rodriguez, Jeonghoon Kim, Van Vinh Nguyen, Qianhui Wan}
+        By the triangle inequality we have that $|f-f_k| \leq |f| + |f_k| = f +f_k$, since $f,f_k \geq 0$.
+        Therefore for all $k\in \naturals$, $g_k \coloneqq f +f_k - |f-f_k| \geq 0$ and $g_k \to 2f$ almost everywhere.
+        Now, applying Fatou's Lemma we see that:
+        \begin{equation*}
+            \begin{split}
+                    \int_E \liminf{g_k} = \int_E 2f
+                    &\leq \liminf \int_E g_k = \liminf \int_E f + f_k - |f-f_k| \\
+                    \implies \int_E 2f 
+                    &\leq \int_E 2f - \limsup \int_E |f-f_k|
+            \end{split}
+        \end{equation*}
+        where the right hand side of the second inequality comes from leveraging the fact that $\lim \int_E f_k$ exists and equals $\int_E f$, and by using standard manipulations of $\liminf$ and $\limsup$.
+        If this limit had not existed we would not have been able to split the $\liminf$ in this way.
+        From this equation it follows that 
+        \[ \limsup \int_E |f-f_k| = 0 \implies \lim \int_E |f-f_k|=0. \]
+\end{solution}
+        

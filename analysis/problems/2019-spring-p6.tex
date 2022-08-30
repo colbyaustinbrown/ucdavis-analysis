@@ -1,0 +1,20 @@
+%! TeX root = ../analysis-main.tex
+
+\problem{6}{
+        Let $\Omega = (0,1) \subset \reals$.
+        For $\overline{u} = \int_\Omega u(x) dx$ show that
+        \[ \lVert u - \overline{u} \rVert_{L^\infty(\Omega)} \leq \lVert u' \rVert_{L^2(\Omega} \]
+        for all $u \in W^{1,1}(\Omega)$.
+}
+
+\begin{solution}{Esha Datta, James Hughes, Edgar Jaramillo Rodriguez, Jeonghoon Kim, Van Vinh Nguyen, Qianhui Wan}
+        Let $x\in (0,1)$, and let $x_0\in (0,1)$ be such that $\overline{u} = u(x_0)$. By the Fundamental Theorem of Calculus we have:
+        \begin{equation*}
+            \begin{split}
+                |u(x)-u(x_0)| = \bigg| \int_{x_0}^x u'(t)\,dt \bigg| \leq \int_0^1 
+                |u'(t)|\,dt  \leq \lVert u' \rVert_{L^2(0,1)}
+            \end{split}
+        \end{equation*}
+        where the last inequality comes from applying Holder's Inequality.
+\end{solution}
+

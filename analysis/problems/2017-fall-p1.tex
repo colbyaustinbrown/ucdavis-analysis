@@ -1,0 +1,27 @@
+%! TeX root = ../analysis-main.tex
+
+\problem{1}{
+        Let $X$ be a Banach space with dual space $X^*$ and let $A \subset X$ be a linera subspace.
+        Define the annihilator $A^{\perp} \subset X^*$ of $A$ by
+        \[ A^\perp = \{f \in X^* : f(x) = 0 \textrm{ for all } x \in A\}. \]
+        Prove that $A$ is dense in $X$ if and only if $A^\perp = \{0\}$.
+}
+
+\begin{solution}{Esha Datta, James Hughes, Edgar Jaramillo Rodriguez, Jeonghoon Kim, Van Vinh Nguyen, Qianhui Wan}
+        ($\implies$) 
+        Suppose $A$ is dense and let $\phi\in A^\perp$.
+        Let $x\in X$ be arbitrary.
+        By the density of $A$ there exists a sequence $(a_n)\subseteq A$ such that $a_n\to x$.
+        Then by the continuity of $\phi$ we have that:
+        \[ \phi(x) = \phi(\lim_{n\to \infty}a_n ) = \lim_{n\to \infty} \phi(a_n) =0, \]
+        so $\phi$ is identically 0.
+
+        ($\impliedby$) 
+        Now suppose $A^{\perp}=\{0\}$, and let $x_0\in X$ be arbitrary.
+        Consider the map $T: \overline{Span\{A,x_0\}} \to \real$ defined so that $T(a) = 0$ for all $a\in A$, $T(x_0) = d(x_0,A) = \inf_{a\in A}\lVert x_0-a \rVert$, and $T$ extends linearly to the rest of the span.
+        One can easily verify that $T$ is a bounded linear functional so by the Hahn-Banach Theorem $T$ extends to a bounded linear functional $\Tilde{T}$ on all of $X$.
+        But then this $\Tilde{T}$ would annihilate $A$, so it must be that $\Tilde{T}$ is identically zero.
+        But then $\Tilde{T}(x_0) = T(x_0) = d(x_0,A) =0$, so $x_0$ is in the closed linear span of $A$.
+        Since we chose $x_0$ to be arbitrary it follows that $A$ is dense in $X$.
+\end{solution}
+

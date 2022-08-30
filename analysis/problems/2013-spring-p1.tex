@@ -1,0 +1,18 @@
+%! TeX root = ../analysis-main.tex
+
+\problem{1}{
+        Find the closest element to the constant function $g(x) = 1 \in L^2[0,1]$ in $V = \{f \in L^2[0,1] \vert \int_0^1 x f(x) dx = 0\} \subseteq L^2[0,1]$.
+}
+
+\begin{solution}{Esha Datta, James Hughes, Edgar Jaramillo Rodriguez, Jeonghoon Kim, Van Vinh Nguyen, Qianhui Wan}
+        Observe that $V = Span\{x\}^\perp$, and hence is a closed linear subspace of $L^2([0,1])$.
+        Hence the desired function is simply the projection of $g$ onto $V$, which we will denote by $P_vg(x)$.
+        Recall that this projection is the unique function in the $V$ satisfying: $g- P_v g \in V^\perp$.
+        But $V^\perp =  (Span\{x\}^\perp)^\perp = \overline{Span\{x\}} = Span\{x\}$, since $Span\{x\}$ is 1-dimensional and hence closed.
+        Thus we have that $P_v g$ satisfies:
+        \[ g(x) - P_vg(x) = cx \implies 1 -P_vg(x) = cx \implies P_vg(x) = 1-cx, \]
+        for some scalar $c$. To determine the value of $c$ recall that $P_vg \in V$ so we have that: 
+        \[ \int_0^1 x(1-cx)\,dx = \frac{1}{2}-\frac{c}{3} = 0. \]
+        Thus we have that $c=3/2$ and the desired function is $P_vg(x) = 1-(3/2)x$.
+\end{solution}
+

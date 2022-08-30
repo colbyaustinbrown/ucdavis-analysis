@@ -1,0 +1,26 @@
+%! TeX root = ../analysis-main.tex
+
+\problem{4}{
+        Let $P_1$ and $P_2$ be a pair of orthogonal projections onto $H_1$ and $H_2$, respectively, where $H_1$ and $H_2$ are closed subspaces of a Hilbert space $H$.
+        Prove that $P_1P_2$ is an orthogonal projection if and only if $P_1$ and $P_2$ commute.
+        In that case, prove that $P_1P_2$ is the orthogonal projection onto $H_1 \cap H_2$.
+}
+
+\begin{solution}{Esha Datta, James Hughes, Edgar Jaramillo Rodriguez, Jeonghoon Kim, Van Vinh Nguyen, Qianhui Wan}
+        $(\Rightarrow)$
+        Suppose $P_1P_2$ is an orthogonal projection.
+        Then $P_1P_2=(P_1P_2)^*=P_2^*P_1^*$.
+        By $P_1,P_2$ each orthogonal projections, $P_1=P_1^*$ and $P_2=P_2^*$, so $P_1P_2=P_2P_1$. 
+
+        $(\Leftarrow)$ 
+        Suppose $P_1P_2=P_2P_1$.
+        Then $P_1P_2=P_2^*P_1^*$ since each is an orthogonal projection, and $P_1P_2=P_2^*P_1^*=(P_1P_2)^*$.
+        Observe $(P_1P_2)^2=P_1^2P_2^2$ by commutative assumption,and since each is an orthogonal projection, $(P_1P_2)^2=P_1P_2$.
+        Thus, $P_1P_2$ is an orthogonal projection. 
+
+        Assume $P_1P_2$ is an orthogonal projection.
+        Take $z\in ran(P_1P_2)$.
+        Since they commute $\implies z\in ran(P_2P_1)$.
+        Thus $z\in ran(P_1)$ and $z\in ran(P_2)$, so $P_1P_2$ projects onto $H_1 \cap H_2$.
+\end{solution}
+

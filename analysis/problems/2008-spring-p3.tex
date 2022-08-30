@@ -1,0 +1,32 @@
+%! TeX root = ../analysis-main.tex
+
+\problem{3}{
+        Show that if $V$ is a closed subspace of a Hilbert space $\mathcal{H}$ and $\phi$ is a bounded linera map from $V$ to $\complex$ then tehre is a unique bounded map from $\mathcal{H}$ to $\complex$ which is an extension of $\phi$ and has the same operator norm as $\phi$.
+}
+
+\begin{solution}{Esha Datta, James Hughes, Edgar Jaramillo Rodriguez, Jeonghoon Kim, Van Vinh Nguyen, Qianhui Wan}
+        I assume we can't simply apply the Hahn-Banach theorem to this question.
+        Note that $V$ is itself a Hilbert space as it is a closed linear subspace of $\mathcal{H}$.
+        Hence by the Riesz Representation Theorem we may express $\phi$ as $\phi(v) = \langle v, u \rangle$ for some fixed $u\in V$.
+        Note that by the Cauchy Schwarz inequality, $\lVert \phi(v) \rVert \leq \lVert v \rVert\lVert u \rVert$, and $\lVert \phi(u) \rVert = \lVert u \rVert^2$, so $\lVert \phi \rVert = \lVert u \rVert$.
+
+        Now since $u\in \mathcal{H}$, we can define a bounded linear functional $\Phi$ on $\mathcal{H}$ so that $\Phi(x) = \langle x, u \rangle$.
+        Clearly $\Phi$ agrees with $\phi$ on $V$ and
+        \[ \lVert \Phi \rVert = \sup_{\lVert x \rVert=1, x\in \mathcal{H}} |\langle x, u \rangle| \geq \sup_{\lVert v \rVert=1, v\in V} |\langle v, u \rangle| = \lVert \phi \rVert. \]
+        At the same time, $\lVert \Phi(x) \rVert \leq \lVert u \rVert\lVert x \rVert = \lVert \phi \rVert\lVert x \rVert$, again by Cauchy-Schwarz, so in fact $\lVert \Phi \rVert = \lVert \phi \rVert$, as desired. 
+
+        To show this is the unique linear functional extending $\phi$ and having the same norm, suppose there existed some other functional, $\psi$ with these properties.
+        By Riesz, we may express $\psi$ as $\psi(x) = \langle x,y\rangle$ for some $y\in \mathcal{H}$.
+        Since $V$ is a closed linear subspace, we may write $y = a+b$ where $a\in V$ and $b\in V^\perp$.
+        Then note for all $v\in V$:
+        \begin{equation*}
+            \langle v, u \rangle = \langle v,y\rangle = \langle v, a+b \rangle = \langle v,a \rangle +\langle v,b \rangle = \langle v,a \rangle, 
+        \end{equation*}
+        therefore it must be the case that $a=u$.
+        But note, by a similar argument as before, that 
+        \begin{equation*}
+            \lVert \psi \rVert = \lVert y \rVert = \sqrt{\langle a+b,a+b \rangle} = \sqrt{\lVert a \rVert^2+\lVert b \rVert^2} = \sqrt{\lVert u \rVert^2+\lVert b \rVert^2}.
+        \end{equation*}
+        In order for $\lVert \psi \rVert = \lVert \phi \rVert =\lVert u \rVert$, it must be the case that $b =0 \implies y =u \implies \psi = \Phi$. 
+\end{solution}
+

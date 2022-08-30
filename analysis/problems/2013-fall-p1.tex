@@ -1,0 +1,23 @@
+%! TeX root = ../analysis-main.tex
+
+\problem{1}{
+        Find $\inf \int_0^1 |f(x) - x|^2 dx$ where the infimum is taken over all $f \in L^2([0,1])$ such tha $\int_0^1 f(x) (x^2 - 1) dx = 1$.
+}
+
+\begin{solution}{Esha Datta, James Hughes, Edgar Jaramillo Rodriguez, Jeonghoon Kim, Van Vinh Nguyen, Qianhui Wan}
+        Let $g(x)= x^2-1$ and let $U =\{u\in L^2([0,1]) : \langle u ,g \rangle = 1 \}$, so we can formulate the problem as finding $\inf_{u\in U} \lVert u(x)-x \rVert_{L^2}^2$.
+        Now, let $\hat{g} = \frac{1}{\lVert g \rVert_{L^2}^2}g$ and consider the map $T: L^2([0,1]) \to L^2([0,1])$ defined by:
+        \[ T(f) = f - \hat{g}. \]
+        Note $T$ is a bijection and a distance preserving map, since for all $f_1,f_2 \in L^2([0,1])$ we have 
+        \[ \lVert Tf_1-Tf_2 \rVert_{L^2} = \lVert f_1- \hat{g} - f_2 + \hat{g} \rVert_{L^2} = \lVert f_1-f_2 \rVert_{L^2}. \]
+        Therefore we can express the desired quantity as:
+        \[ \inf_{u\in U} \lVert u(x)-x \rVert_{L^2}^2 = \inf_{f\in T(U)} \lVert f(x)-Tx \rVert_{L^2}^2. \]
+        But note, if $u\in U$ then
+        \[ \langle Tu, g\rangle = \langle u - \hat{g}, g\rangle = \langle u , g\rangle - \langle \hat{g},g \rangle = 0, \]
+        so in fact $T(U) = Span\{g\}^\perp$.
+        Thus we have reformulate the problem as finding $\inf_{f\in Span\{g\}^\perp} \lVert f(x)-Tx \rVert_{L^2}^2$.
+        Since $Span\{g\}^\perp$ is linear subspace, this infimum is equal to the norm squared of the projection of $Tx$ onto $(Span{g}^\perp)^\perp = \overline{Span\{g\}} = Span\{g\}$, since any finite dimensional subspace is closed.
+        Hence we only have to calculate the norm-squared of this projection, which is given by:
+        \[ \bigg(\frac{\langle Tx,g\rangle}{\lVert g \rVert_{L^2}} \bigg)^2 =  \bigg(\frac{\langle x-\hat{g}, g\rangle}{\lVert g \rVert_{L^2}}\bigg)^2. \]
+\end{solution}
+

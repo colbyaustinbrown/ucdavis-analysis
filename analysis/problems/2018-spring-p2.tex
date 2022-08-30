@@ -1,0 +1,23 @@
+%! TeX root = ../analysis-main.tex
+
+\problem{2}{
+        Let $H$ be a Hilbert space and let $P,Q \in B(H)$ be two orthogonal projections.
+        Prove that $\ker PQ \subseteq \ker P + \ker Q$ always, and that $\ker PQ = \ker P + \ker Q$ when $PQ$ is also an orthogonal projection.
+}
+
+\begin{solution}{Esha Datta, James Hughes, Edgar Jaramillo Rodriguez, Jeonghoon Kim, Van Vinh Nguyen, Qianhui Wan}
+        Take $z \in ker(PQ)$.
+        Then $PQ(z)=0.
+        \implies Q(z) \in ker(P)$. So $z \in ran(Q)$ or $z \in ker(Q)$.
+        If $z \in ran(Q)$ then $z \in ker(P)$, otherwise $z \in ker (Q)$.
+        Thus, if $z \in ker(PQ) \implies z\in ker(P) +ker(Q)$.
+        Therefore, $ker(PQ) \subseteq ker(P) + ker(Q)$.
+
+        Now suppose $PQ$ is also an orthogonal projection.
+        Then $PQ=(PQ)^*=Q^*P^*$.
+        Since $P$ and $Q$ are orthogonal projections, $P=P^*$ and $Q=Q^*$, so $PQ=QP$.
+        Take $z \in ker(P) \implies PQ(z)=0$.
+        Since $PQ=QP \implies QP(z)=0$, so $z \in ker(PQ)$.
+        Thus, $ker(P)+ker(Q)=ker(PQ)$.
+\end{solution}
+

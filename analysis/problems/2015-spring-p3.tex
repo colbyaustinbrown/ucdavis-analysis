@@ -1,0 +1,19 @@
+%! TeX root = ../analysis-main.tex
+
+\problem{3}{
+        Let $P(x): \reals \to \reals$ be a polynomial of degree $n$.
+        Show that there exists a constant $C$ depending onl yon $n$ such that $|P(\xi)| \leq C \int_{-1}^1 |P(x)|^2 dx$ for all $\xi \in (-1,1)$.
+}
+
+\begin{solution}{Esha Datta, James Hughes, Edgar Jaramillo Rodriguez, Jeonghoon Kim, Van Vinh Nguyen, Qianhui Wan}
+        The problem as stated is incorrect.
+        To see this simply consider the polynomials $p_n(x) =\frac{1}{n}$, $n\in \naturals$, each of degree 0. Then we have $|p_n(\xi)| = \frac{1}{n}$ while $\int_{-1}^1|p_n(x)|^2\,dx = \frac{2}{n^2}$, so clearly no such $C$ can exist.
+
+        However, if we replace the right hand side with $C \bigg(\int_{-1}^1 |P(x)|^2\,dx\bigg)^{1/2}$ then the problem becomes feasible.
+        Note that the space of polynomials of degree $\leq n$ on the domain $[-1,1]$, denoted $P_n([-1,1])$ is a vector space of degree $n+1 <\infty$.
+        What's more, the supremum norm and the $L^2$-norm are norms on this space.
+        Then because any two norms on a finite dimensional vector space are equivalent we have that there exist constants $c_1,c_2$ depending only on $n$ such that:
+        \[ c_1\lVert P \rVert_{L^2} \leq \lVert P \rVert_{\infty} \leq c_2\lVert P \rVert_{L^2} \, \forall P \in P_n([-1,1]) \]
+        which gives the desired result.
+\end{solution}
+

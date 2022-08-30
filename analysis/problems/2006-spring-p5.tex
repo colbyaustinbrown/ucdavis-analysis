@@ -1,0 +1,33 @@
+%! TeX root = ../analysis-main.tex
+
+\problem{5}{
+Take $\{u_k\}_{k \in \naturals}$ to be an orthonormal set in the Hilbert space $X$.
+Characterize those sequences of scalars $(a_k)$ such that $(a_k u_k)$ is compact in $X$.
+}
+
+\begin{solution}{Esha Datta, James Hughes, Edgar Jaramillo Rodriguez, Jeonghoon Kim, Van Vinh Nguyen, Qianhui Wan}
+        We claim it is necessary and sufficient that $(a_n) \to 0$ and that at least one $a_k=0$.
+        First consider what happens if $(a_n)$ does not converge to 0.
+        Then there exists an $\epsilon >0$ such that $|a_n| > \epsilon$ for infinitely many $n\in \naturals$.
+        Consider this subsequence, denoted $(a_{n_k})$ and note that for $k_1 \neq k_2$:
+        \[ \lVert a_{n_{k_1}}u_{n_{k_1} \rVert
+        - a_{n_{k_2}}u_{n_{k_2}}}^2 = |a_{n_{k_1}}|^2 + |a_{n_{k_2}}|^2 > \epsilon^2 +\epsilon^2 = 2 \epsilon^2. \]
+        \[ \implies \lVert a_{n_{k_1}}u_{n_{k_1} \rVert
+        - a_{n_{k_2}}u_{n_{k_2}}} > \sqrt{2}\epsilon > \epsilon \]
+        Therefore  $(a_{n_k}u_{n_{k}})$ cannot be covered by a finite $\epsilon/2$-net, hence it is not pre-compact and thus not compact. 
+
+        Now consider the situation where $(a_n)\to 0$, and fix $\epsilon >0$.
+        Note that there exists an $N \in \naturals$ such that for all $n>N$ we have that $|a_n| < \epsilon/\sqrt{2}$.
+        Now consider the collection of open balls $\mathcal{B} =  \bigcup_{k=1}^{N+1}B(a_ku_k,\epsilon)$.
+        We claim that this $\epsilon$-net covers $(a_n u_n)$.
+        Cleary $a_nu_n \in \mathcal{B}$ for all $n \leq N+1$. Then if $n>N+1$ note that:
+        \[ \lVert a_nu_n - a_{N+1}u_{N+1} \rVert^2 = |a_n|^2 +|a_{N+1}|^2 < \epsilon^2/2 + \epsilon^2/2 = \epsilon^2 \]
+        \[ \implies \lVert a_nu_n - a_{N+1}u_{N+1} \rVert < \epsilon, \]
+        so $a_nu_n \in B(a_{N+1}u_{N+1},\epsilon)$, and hence in $\mathcal{B}$.
+        So we have that $\mathcal{B}$ is a finite $\epsilon$-net covering $(a_nu_n)$, so the set is pre-compact.
+        We only have left to show that it is closed.
+        But note that if $a_n\to 0$ then $(a_nu_n) \to 0$ in norm.
+        Hence the only limit points of $(a_nu_n)$ are the terms of the sequence and zero.
+        Thus we require that at least one $a_k=0$ so that 0 is an element in the set.
+\end{solution}
+

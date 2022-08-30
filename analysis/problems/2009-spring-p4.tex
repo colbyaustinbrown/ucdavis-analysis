@@ -1,0 +1,39 @@
+%! TeX root = ../analysis-main.tex
+
+\problem{4}{
+        Let $\mathcal{H}$ be a Hilbert space (not necessarily separable) and let $B \subset \mathcal{H}$ denote the closed unit ball.
+        \begin{enumerate}
+                \item
+                        Show that $B$ is weakly sequentially compact.
+                \item
+                        If $T \in B(\mathcal{H})$ is compact, prove that $T(B)$ is closed.
+        \end{enumerate}
+}
+
+\begin{solution}{Esha Datta, James Hughes, Edgar Jaramillo Rodriguez, Jeonghoon Kim, Van Vinh Nguyen, Qianhui Wan}
+        For the first problem, let $(x_n) \subseteq B$.
+        Define $U = \overline{Span\{x_n\}_{n=1}^\infty}$.
+        Note that $U$ is a separable Hilbert space (since it has a countable basis) and so by Banach Alaglou the closed unit ball of $U^*$ is weak-$*$ compact.
+        But $U$ being Hilbert means it is isomorphic to its dual under the embedding: 
+        \[ u \mapsto \Tilde{u}(v) = \langle v,u \rangle. \]
+        Hence $U^*$ is separable so the closed unit ball in $U^*$ is weak-$*$ sequentially compact.
+        By identifying each $x_n$ with its embedding in the dual this means that there exists a subsequence $(x_{n_k})$ such that $x_{n_k} \rightharpoonup x$ in $U$.
+        That is for all $u \in U$ we have that:
+        \[ \langle x_{n_k}, u \rangle \to \langle x, u \rangle. \]
+        Now let $y\in \mathcal{H}$ be arbitrary. Recall from the Riesz Representation Theorem that the map $T_y: \mathcal{H} \to \complex$ defined by $T_y(x) = \langle x, y \rangle$ is a bounded linear functional on $\mathcal{H}$.
+        Hence $T_y|_{U}$ is a bounded linear functional on $U$.
+        Applying Riesz again this means that  $T_y|_{U}(x) = \langle x, u\rangle$ for some $u\in U$ (in particular $u$ is the projection of $y$ on $U$).
+        Hence we have that:
+        \[ \langle x_{n_k}, y \rangle =\langle x_{n_k}, u \rangle \to \langle x, u \rangle  = \langle x, y \rangle, \]
+        so in fact $x_{n_k}\rightharpoonup x$ in $\mathcal{H}$ as desired. 
+
+        Now for the second problem, let $(Tx_n)\subseteq T(B)$ be a convergent sequence, so $Tx_n \to y \in \mathcal{H}$.
+        We want to show $y\in T(B)$.
+        From the previous part, $B$ is weakly sequentially compact so there exists a subsequence $(x_{n_k})$ of $(x_n)$ converging weakly to some $x\in B$.
+        That is, for all $\phi \in \mathcal{H}^*$ we have that $\phi x_{n_k} \to \phi x$.
+        But note that for all $\phi \in \mathcal{H}^*$, the map $\phi \circ T$ defines a bounded linear functional on $\mathcal{H}$ so it must be the case that $\phi \circ Tx_{n_k} \to \phi \circ Tx$.
+        Hence $Tx_{n_k} \rightharpoonup Tx$.
+        But $Tx_n \to y \implies Tx_n \rightharpoonup y \implies Tx_{n_k} \rightharpoonup y$.
+        Since weak limits are unique it follows that $y = Tx$, so $T(B)$ is closed.
+\end{solution}
+

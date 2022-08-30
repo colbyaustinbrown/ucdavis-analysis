@@ -1,0 +1,35 @@
+%! TeX root = ../analysis-main.tex
+
+\problem{4}{
+        Let $T$ be a bounded linear operator on a Hilbert space with an orthonormal basis of eigenvectors with eigenvalues $\Lambda = \{\lambda_n\}$.
+        Show that the spectrum $\sigma(T)$ is exactly the closure of the set $\Lambda$.
+}
+
+\begin{solution}{Esha Datta, James Hughes, Edgar Jaramillo Rodriguez, Jeonghoon Kim, Van Vinh Nguyen, Qianhui Wan}
+        First note that because $\sigma(T)$ is closed, $\Lambda \subseteq \sigma(T) \implies \overline{\Lambda} \subseteq \sigma(T)$.
+        For the reverse inclusion, first note that because $T$ has an orthonormal basis of eigenvectors, henceforth denoted $\{e_n\}$, we may express $T$ as:
+        \[ T = \sum_{n=1}^\infty \lambda_n P_n, \]
+        where $P_n$ denotes the not necessarily finite-dimensional orthogonal projection on the eigenspace of $\lambda_n$.
+        We first show that the point spectrum of $T$ is exactly $\Lambda$.
+        To see this, suppose there exists $x \neq 0$ such that $Tx = \lambda x$ for some $\lambda \in \complex$.
+        $x\neq 0$ implies that there exists some $m\in\naturals$ such that $\langle x, e_m \rangle \neq 0$.
+        Then observe:
+        \begin{equation*}
+            Tx = \sum_{n=1}^\infty \lambda_n P_n x = \sum_{n=1}^\infty \lambda_n P_n \bigg( \sum_{n=1}^\infty \langle x, e_n \rangle e_n\bigg) = \sum_{n=1}^\infty \lambda_n \langle x, e_n \rangle e_n = \sum_{n=1}^\infty \lambda \langle x, e_n \rangle e_n = \lambda x.
+        \end{equation*}
+        Hence we require that $\lambda_n \langle x, e_n \rangle = \lambda \langle x, e_n \rangle$ for all $n$.
+        Since $langle x, e_m \rangle \neq 0$ this implies that $\lambda = \lambda_m$. 
+
+        Note, for $x,y\in \mathcal{H}$ we have
+        \begin{equation*}
+            \begin{split}
+                \langle Tx, y \rangle 
+                = \langle  \sum_{n=1}^\infty \lambda_n P_n x, y \rangle
+                =  \sum_{n=1}^\infty \langle \lambda_n P_n x, y \rangle 
+                &= \sum_{n=1}^\infty \langle x, \overline{\lambda_n}P_n y \rangle \\
+                &= \langle x, \sum_{n=1}^\infty \overline{\lambda_n}P_n y \rangle,
+            \end{split}
+        \end{equation*}
+        so $T^* = \sum_{n=1}^\infty \overline{\lambda_n}P_n$. 
+\end{solution}
+

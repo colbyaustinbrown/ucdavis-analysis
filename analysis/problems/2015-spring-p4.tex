@@ -1,0 +1,34 @@
+%! TeX root = ../analysis-main.tex
+
+\problem{4}{
+        Let $f_n : [0,1] \to \reals$ be a sequence of measurable functions.
+        Suppose
+        \begin{enumerate}
+                \item
+                        $\int_0^1 |f_n(x)|^2 dx \leq 1 \forall n \in \naturals$, and
+                \item
+                        $f_n \to 0$ almost everywhere.
+        \end{enumerate}
+        Show that
+        \[ \lim_{n \to \infty} \int_0^1 f_n(x) dx = 0. \]
+}
+
+\begin{solution}{Esha Datta, James Hughes, Edgar Jaramillo Rodriguez, Jeonghoon Kim, Van Vinh Nguyen, Qianhui Wan}
+         By Egorov's Theorem, for every $\epsilon >0$ there exists a set $\Omega \subseteq [0,1]$ such that $f_n\to 0$ uniformly on $\Omega$ and $\mu(\Omega^c) < \epsilon$, where naturally $\Omega^c = [0,1]\setminus \Omega$.
+         Then we have:
+        \begin{equation*}
+            \begin{split}
+                \bigg|\int_0^1 f_n(x)\,dx \bigg| 
+                \leq  \int_0^1 |f_n(x)| \,dx 
+                &= \int_\Omega |f_n(x)| \,dx + \int_{\Omega^c} |f_n(x)| \,dx \\
+                &\leq \mu(\Omega) \sup_{x\in \Omega}|f_n(x)| + \int_{\Omega^c} |f_n(x)| \,dx \\
+                &\leq\sup_{x\in \Omega}|f_n(x)| + \int_{\Omega^c} |f_n(x)| \,dx
+            \end{split}
+        \end{equation*}
+        We can make the first term in that sum arbitrarily small for large $n$ since $f_n$ converges to $0$ uniformly on $\Omega$.
+        For the second term, applying Holder's Inequality gives:
+        \[ \int_{\Omega^c} |f_n(x)| \,dx \leq \lVert f_n \rVert_{L^2(\Omega^c)} \lVert 1 \rVert_{L^2(\Omega^c)} \leq \mu(\Omega^c)^{1/2} < \sqrt{\epsilon}. \]
+        Since this holds for all $\epsilon>0$ we have that 
+        \[ \lim_{n\rightarrow\infty} \int_0^1 f_n(x) dx = 0. \]
+\end{solution}
+

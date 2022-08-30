@@ -1,0 +1,50 @@
+%! TeX root = ../analysis-main.tex
+
+\problem{3}{
+        \begin{enumerate}
+                \item Define the compactness of an operator $A \in B(X)$ with $X$ a Hilbert space in terms of properties of the images of bounded sets.
+                \item Suppose that $X$ is separable with orthonormal basis $\{e_i\}_{i\geq0}$ and write $P_i$ for the orthogonal projection onto the span on $\{e_0, \ldots , e_i\}$.
+                        Show that $A \in B(X)$ is compact iff $\{P_i A\}$ converges to $A$ in norm. 
+        \end{enumerate}
+}
+
+\begin{solution}{Esha Datta, James Hughes, Edgar Jaramillo Rodriguez, Jeonghoon Kim, Van Vinh Nguyen, Qianhui Wan}
+        We say that an operator $A\in B(X)$ is compact if it maps bounded sets to pre-compact sets, i.e., if $A(B)$ is pre-compact for all $B\subseteq X$ bounded.
+        Now suppose $A\in B(X)$ is a compact operator, we wish to show that $(P_n A)$ converges to $A$ in norm.
+        Fix $\epsilon >0$ and let $\overline{B}$ denote the closed unit ball in $X$.
+        Since this set it bounded, it follows that $A(\overline{B})$ is pre-compact.
+        Hence, by Theorem 9.17 in H\&N, there exists an $N\in \naturals$ such that for all $a\in A(B)$ and $n >N$ we have that:
+        \begin{equation*}
+            \sum_{k=n}^\infty |\langle a, e_k \rangle|^2 < \epsilon^2.
+        \end{equation*}
+        Now let $x\in X$ such that $\lVert x \rVert=1$. Since $\{e_n:n\in\naturals\}$ forms an orthonormal basis we may write
+        \begin{equation*}
+            Ax = \sum_{k=1}^\infty \langle Ax, e_k \rangle e_k \implies P_iAx = \sum_{k=1}^i \langle Ax, e_k \rangle e_k.
+        \end{equation*}
+        Hence for all $n >N$ we have that:
+        \begin{equation*}
+                \lVert Ax-P_nAx \rVert^2 = \sum_{k=n}^\infty \langle Ax, e_k \rangle e_k < \epsilon^2 \implies \lVert Ax-P_nAx \rVert < \epsilon,
+        \end{equation*}
+        so we have that $(P_nA)$ converges to $A$ in norm.
+
+        For the reverse direction suppose that $(P_nA)$ converges to $A$ in norm.
+        One may take it as a fact that the uniform limit of compact operators is compact, but to be thorough we will prove this statement.
+        Suppose $T_n\in B(X,y)$ is a sequence of compact operators such that $T_n \to T$ in the operator norm.
+        Let $B$ be a bounded set and let $Tx_n$ be a sequence in $T(B)$.
+        We wish to show that $Tx_n$ has a convergent subsequence.
+        First note that since $T_1$ is compact, $T_1x_n$ has a convergent subsequence, which we will denote $T_1x_{n,1}$.
+        Now since $T_2$ is compact $T_2x_{n,1}$ also contains its own convergent subsequence $T_2x_{n,2}$.
+        Repeating this process for all $n\in \naturals$ and taking the diagonal sequence of inputs, $x_{n,n}$, we see that $T_ix_{n,n}$ converges for all $i\in \naturals$.
+        Now fix $\epsilon >0$ and let $N\in\naturals$ be sufficiently large so that $\lVert T_N -T \rVert <\epsilon/3$ and let $M$ be sufficiently large so that $||T_Nx_{n,n}- T_Nx_{k,k}|| < \epsilon/3$ for all $k,n > M$.
+        Then for all $k,n>M$ we have that:
+        \begin{equation*}
+            \begin{split}
+                \lVert Tx_{n,n}-Tx_{k,k} \rVert
+                &\leq \lVert Tx_{n,n}-T_Nx_{n,n} \rVert + \lVert T_Nx_{n,n} -T_Nx_{k,k} \rVert + \lVert T_Nx_{k,k}-Tx_{k,k} \rVert \\
+                &\leq 2\lVert T_N -T \rVert + \lVert T_Nx_{n,n} -T_Nx_{k,k} \rVert \\
+                &< \epsilon.
+            \end{split}
+        \end{equation*}
+        Thus the subsequence $Tx_{n,n}$ is Cauchy and hence convergent, so $T(B)$ is sequentially pre-compact which is equivalent to pre-compact as we are in a metric space.
+\end{solution}
+
