@@ -1,0 +1,68 @@
+%! TeX root = ../analysis-main.tex
+
+\problem{6}{
+        Let $\Omega = \{ (x,y) \mid y \geq 0, x \in \reals\}$.
+        Let $f \in C_0^1(\reals^2)$.
+        Show that
+        \[ \int_\reals |f(x,0)|^2 dx \leq 2 (\int_\Omega |f(x,y)|^2 dxdy + \int_\Omega \lvert \frac{\partial f}{\partial y} (x,y) \rvert^2 dxdy ). \]
+}
+
+\begin{solution}{Kyle Chickering}
+	First, let $\phi\in C_0^1(\reals^2)$ be non-negative.
+    Then by the fundamental theorem of calculus and the vanishing of $\phi$ at infinity we find that
+	\begin{align*}
+		\int_{\reals}\,\phi^2(x,0)\,dx &= -\int_{\reals}\int_0^\infty\,\frac{\partial}{\partial y}\left[\phi^2\right]\,dy\,dx \\
+                                   &= -2\int_{\reals}\int_0^\infty\,\phi\frac{\partial}{\partial y}\phi\,dy\,dx \\
+                                   &\leqslant 2\int_{\Omega}\,|\phi|\left|\frac{\partial \phi}{\partial y}\right|\,dy\,dx .
+	\end{align*}
+	Applying young's inequality finally yields
+    \[ \int_{\reals}\,\phi^2(x,0)\,dx \leqslant \int_{\Omega}\,|\phi|^2\,dy\,dx + \int_{\Omega}\,\left|\frac{\partial \phi}{\partial y}\right|\,dy\,dx \tag{$*$}. \]
+
+	We now consider an arbitrary function $f\in C_0^1(\reals^2)$.
+    We have that $|f|=f_++f_-$ where $f_+$ and $f_-$ are respectivly the positive and negative parts of $f$.
+    We also have
+    \[ |f|^2 = f_+^2 + 2f_+f_- + f_-^2 \leqslant 2(f_+^2 + f_-^2) \leqslant 2|f|^2 \tag{$**$}. \]
+	we also note the following
+	\begin{align*}
+		\left|\frac{\partial f}{\partial y}\right|
+		&=
+			\left(\frac{\partial f}{\partial y}\right)_+ +
+			\left(\frac{\partial f}{\partial y}\right)_- \\
+		&=
+			\left(\frac{\partial}{\partial y}(f_+-f_-)\right)_+ +
+			\left(\frac{\partial}{\partial y}(f_+-f_-)\right)_- \\
+		&= \left|\frac{\partial}{\partial y}(f_+-f_-)\right| -
+			\left(\frac{\partial}{\partial y}(f_+-f_-)\right)_- +
+			\left(\frac{\partial}{\partial y}(f_+-f_-)\right)_- \\
+		&\leqslant \left|\frac{\partial f_+}{\partial y}\right| +
+			\left|\frac{\partial f_-}{\partial y}\right| \\
+	\end{align*}
+	where we have used the fact that $|\psi|= \psi_++\psi_-$.
+    This implies that
+	\begin{align*}
+		\left|\frac{\partial f}{\partial y}\right|^2 \leqslant 2\left(\left|\frac{\partial f_+}{\partial y}\right| +
+			\left|\frac{\partial f_-}{\partial y}\right|\right) \leqslant
+		2\left|\frac{\partial f}{\partial y}\right|^2 \tag{$***$}
+	\end{align*}
+	using our estimate from above.
+
+	We now estimate
+	\begin{align*}
+		\int_{\reals}\,|f(x,0)|^2\,dx
+		&\leqslant 2\int_{\reals}\,f_+^2(x,0)+f_-^2(x,0)\,dx \qquad \text{by
+			($**$)} \\
+		&\leqslant 2\int_{\Omega}\,f_+^2\,dy\,dx +
+			2\int_{\Omega}\,\left(\frac{\partial f_+}{\partial
+			y}\right)^2\,dy\,dx + 2\int_{\Omega}\,f_-^2\,dy\,dx \\ &\qquad+
+			2\int_{\Omega}\,\left(\frac{\partial f_-}{\partial
+			y}\right)^2\,dy\,dx \qquad \text{by ($*$)} \\
+		&=2\int_{\Omega}\,f_+^2 + f_-^2\,dy\,dx + 2\int_{\Omega}\,\left(\frac{\partial f_+}{\partial
+			y}\right)^2 + \left(\frac{\partial f_-}{\partial
+			y}\right)^2\,dy\,dx \\
+		&\leqslant 2\int_{\Omega}\,|f|^2\,dy\,dx +
+			2\int_{\Omega}\left|\frac{\partial f}{\partial
+			y}\right|^2\,dy\,dx \qquad \text{by ($*$) and ($***$)}
+	\end{align*}
+	as desired.
+\end{solution}
+

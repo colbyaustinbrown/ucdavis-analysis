@@ -1,0 +1,86 @@
+%! TeX root = ../analysis-main.tex
+
+\problem{1}{
+        Let $f: [0,1] \to \reals$ be a continuous function.
+        Prove that
+        \[ \lim_{n \to \infty} \int_0^1 f(x)\sin(n\pi x)dx = 0. \]
+}
+
+\begin{solution}{Kyle Chickering}
+        This is the well-known ``Riemann-Lebesgue lemma'', it is more generally a statement about the coeficient decay of the $L^2$ Fourier expansion for $f$.
+        We will prove this result in three different ways.
+        Note that all proofs hold for $e^{i n\pi x}$ in place of $\sin(n\pi x)$ which is a more general result.
+
+        The first proof is the ``unsophisticated'' proof, presented before the notions of measure theory, using only undergraduate notions of continuity.
+        The other two proofs use approximation properties of continuous functions.
+
+	Let $x = \xi + \frac{1}{n}$ for an integer $n$, then
+    \[ \int_0^1\,f(x)\sin(n\pi x)\,dx = -\int_{-1/n}^{1-1/n}\,f\left(\xi + \frac{1}{n}\right)\sin(n\pi \xi)\,d\xi. \]
+	Consequently
+	\begin{align*}
+		2\int_0^1\,f(x)\sin(n\pi x)\,dx &= \int_0^1\,f(x)\sin(n\pi x)\,dx - \int_{-1/n}^{1-1/n}\,f\left(\xi + \frac{1}{n}\right)\sin(n\pi \xi)\,d\xi \\
+                                        &= \int_{0}^{1-1/n}\,(f(x)-f\left(x+\frac{1}{n}\right))\sin(n\pi x)\,dx \\ &\qquad + \int_{1-1/n}^1\,f(x)\sin(n\pi x)\,dx \\
+                                        &\qquad - \int_{-1/n}^0\,f\left(x+\frac{1}{n}\right)\sin(n\pi x)\,dx \\
+                                        &=: I + J - K.
+	\end{align*}
+	Since $f$ is continuous on $[0,1]$, it is uniformly continuous and hence bounded by a constant $M>0$.
+    Then
+    \[ |I| \leqslant M\int_{1-1/n}^1\,|\sin(n\pi x)|\,dx \leqslant \frac{M}{n} \]
+	and
+    \[ |J| \leqslant M \int_{-1/n}^0\,|\sin(n\pi x)|\,dx \leqslant \frac{M}{n}. \]
+
+	Since $f$ is uniformly continuous, given any $\epsilon>0$ we may choose $n$ large enough so that $|f(x)-f(x+1/n)|<\epsilon/3$ for all $x\in [0,1]$.
+    This shows that
+	\begin{align*}
+		|K| &\leqslant \int_0^{1-1/n}|f(x)-f\left(1+\frac{1}{n}\right)||\sin(n\pi x)|\,dx \\
+            &< \frac{\epsilon}{3}\int_0^{1-1/n}\,|\sin(n\pi x)|\,dx < \frac{\epsilon}{3}.
+	\end{align*}
+
+	Choose $n$ to be the smallest such $n$ such that $|I|, |J|$ and $|K|$ are all less than $\epsilon/3$.
+    Then
+    \[ \left|\int_0^1\,f(x)\sin(n\pi x)\,dx\right| \leqslant |I| + |J| + |K| < 3\frac{\epsilon}{3} = \epsilon \]
+	as desired. $\blacksquare$
+
+	By the Weierstrauss approximation theorem $f$ can be approximated by a sequence of polynomials $p_k:[0,1]\rightarrow \reals$ such that $\norm{f-p_k}_{L^\infty}\rightarrow 0$ as $k\rightarrow \infty$.
+    Let $\epsilon$ be given and choose $N$ such that $\norm{f-p_k}_{L^\infty}<\epsilon/2$ whenever $k\geqslant N$.
+    Then a simple estimate shows
+	\begin{align*}
+		\left|\int_0^1\,(p_k(x)-f(x))\sin(n\pi x)\right| &\leqslant \int_0^1\,|p_k(x)-f(x)||\sin(n\pi x)|\,dx \\
+                                                         &\leqslant \norm{p_k-f}_{L^\infty}\norm{\sin(n\pi x)}_{L^1} \\
+                                                         &< \epsilon.
+	\end{align*}
+
+	Next, for any fixed $k$ we may choose an $n$ depending on $k$ such that
+    \[ \frac{1}{n\pi}\left[|p_k(0)-p_k(1)|+\int_0^1\,|p_k'(x)|\,dx\right] < \epsilon/2 \]
+	since $p_k$ is a polynomial and hence bounded on $[0,1]$.
+	
+	Note that a polynomial $p_k$ can be differentiated and integrated on the interval $[0,1]$.
+    Hence we estimate, integrating by parts and choosing a sufficient $n$ depending on $k$ as above
+	\begin{align*}
+		\left|\int_0^1\,f(x)\sin(n\pi x)\,dx \right| &\leqslant \left|\int_0^1\,(f(x)-p_k(x))\sin(n\pi x)\right| + \left|\int_0^1\,p_k(x)\sin(n\pi x)\right| \\
+                                                     &< \frac{\epsilon}{2} + \left|-\frac{1}{n\pi}p_k(x)\cos(n\pi x)\big|_0^1 + \frac{1}{n\pi}\int_0^1\,p_k'(x)\cos(n\pi x)\,dx\right| \\
+                                                     &\leqslant \frac{\epsilon}{2} + \frac{1}{n\pi}\left[|p_k(0)-p_k(1)|+\int_0^1\,|p_k'(x)|\,dx\right] \\
+                                                     &< \epsilon.
+	\end{align*}
+	as desired. $\blacksquare$
+
+	Since $f$ is continuous on $[0,1]$ it is $L^1([0,1])$ and can be approximated by a sequence of simple functions $\phi_k(x)\nearrow f(x)$ as $k\rightarrow \infty$.
+    Since simple functions are dense in $L^1$, given any $\epsilon > 0$ we may choose an $N$ large enough that $\norm{f-\phi_k}_{L^1}<\epsilon/2$ whenever $k\geqslant N$ and hence by H\"older's inequality
+    \[ \left|\int_0^1\,(f(x)-\phi_k(x))\sin(n\pi x)\,dx\right| \leqslant \norm{f-\phi_k}_{L^1}\norm{\sin(n\pi x)}_{L^\infty} < \epsilon/2 \]
+
+	Given any $\epsilon > 0$ and any simple function $\phi_k(x):=\sum_{j=1}^M\alpha_j^k\chi_{A^j}(x)$, choose $n$ such that $\frac{2}{n\pi}\sum_{j}|alpha_j^k|<\epsilon/2$. Then we have the estimate
+	\begin{align*}
+		\left|\int_0^1\,\phi_k(x)\sin(n\pi x)\,dx\right| &= \left|\sum_{j=1}^M\alpha_j^k\int_{A^j}\,\sin(n\pi x)\,dx\right| \\
+                                                         &\leqslant \left|\sum_{j=1}^M\alpha_j^k\int_0^1\,\sin(n\pi x)\,dx\right| \\
+                                                         &=\left|-\frac{1}{n\pi}\sum_{j=1}^M\alpha_j^k\cos(n\pi x)\big|_0^1\right| \\
+                                                         &\leqslant \frac{2}{n\pi}\sum_{j=1}^M|\alpha_j^k| < \frac{\epsilon}{2}.
+  \end{align*}
+
+  By the two estimates above we have that
+  \begin{align*}
+    \left|\int_{0}^1\,f(x)\sin(n\pi x)\,dx\right| &\leqslant \left|\int_0^1\,(f(x)-\phi_k(x))\sin(n\pi x)\,dx\right| + \left|\int_0^1\,\phi_k(x)\sin(n\pi x)\right| \\
+                                                  &< \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon
+  \end{align*}
+  as desired. $\blacksquare$
+\end{solution}
+

@@ -1,0 +1,21 @@
+%! TeX root = ../analysis-main.tex
+
+\problem{4}{
+        Consider the functions $f_N(x) = (2\pi)^{-1} \sum_{|k| \leq N} e^{ikx}$.
+        Show that if $g \in L^2(\mathbb{T})$, then $(f_N * g) \to g$ in $L^2$.
+}
+
+\begin{solution}{Kyle Chickering}
+	A simple calculuation gives
+	\begin{align*}
+		(f_N*g)(x) &= \int_{\mathbb{T}}\,\frac{1}{2\pi}\sum_{|k|\leqslant N}e^{ik(x-y)}g(y)\,dy \\
+                   &= \frac{1}{\sqrt{2\pi}}\sum_{|k|\leqslant N}e^{ikx}\frac{1}{\sqrt{2\pi}}\int_{\mathbb{T}}\,e^{-iky}g(y)\,dy \\
+                   &= \frac{1}{\sqrt{2\pi}}\sum_{|k|\leqslant N}e^{ikx}\hat{g}_k = S_N(x).
+	\end{align*}
+
+	Since $\{e^{ikx}\}_{k\in \integers}$ is an orthonormal basis of $L^2(\mathbb{T})$, we can expand $g$ as
+    \[ g(x) = \sum_{k\in \integers}(e^{ikx},g)_{L^2}e^{ikx} \]
+	where equality is taken in the $L^2$ sense.
+    Because $(e^{ikx},g)_{L^2}=\int_{\mathbb{T}}\,g(y)e^{-iky}\,dy=\hat{g}_k$ we can see that $S_N\rightarrow g$ in the $L^2$ sense as $N\rightarrow\infty$.
+\end{solution}
+

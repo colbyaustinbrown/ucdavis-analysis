@@ -1,0 +1,50 @@
+%! TeX root = ../analysis-main.tex
+
+\problem{1}{
+	Consider the Hilbert space $L^2(\mathbb{T})$ of complex valued square integrable functions with the inner product given by
+    \[ (f,g)=\int_{\mathbb{T}}\,\overline{f(x)}g(x)\,dx. \]
+
+	\begin{enumerate}[label=(\alph*)]
+        \item
+            For all $\phi \in \reals$, define $g_\phi(\theta)=\sin(\theta + \phi)$ for $\theta\in [0,2\pi]$.
+            Let $V$ be the closed linear span of $\{g_\phi \mid \phi\in\reals\}$. Show that $V$ is two-dimensional.
+
+        \item
+            Find $k:\mathbb{T}\times \mathbb{T}\rightarrow \complex$ such that for all $f\in L^2(\mathbb{T})$ the integral operator $K$ defined by
+            \[ Kf(x) = \int_{\mathbb{T}}\,k(x,y)f(y)\,dy \]
+            satisfies
+            \[ \norm{Kf-f}=\inf\{\norm{g-f} \mid g\in V\}. \]
+	\end{enumerate}
+}
+
+\begin{solution}{Kyle Chickering}
+	\begin{enumerate}[label=(\alph*)]
+            \item 
+                We claim $\{\sin(\theta),\cos(\theta)\}$ is a basis for $V$, from which it follows that $V$ is two dimensional.
+
+                Note that for any $g\in V$, we can write
+                \begin{align*}
+                    g(\theta) &= \sum_{\phi\in \mathcal{A}}g_{\phi}(\theta)	\\
+                              &= \sin\theta\sum_{\phi\in \mathcal{A}}\cos\phi + \cos\theta\sum_{\phi\in \mathcal{A}}\sin\phi
+                \end{align*}
+                for some finite collection of real numbers $\mathcal{A}$ by the angle sum and difference formulas.
+
+                We show that given any $\alpha,\beta\in \reals$, we may write
+                \[ \alpha = \sum_{\phi\in \mathcal{A}_\alpha}\cos\phi \qquad \text{and} \qquad \beta = \sum_{\phi\in \mathcal{A}_\beta}\sin\phi. \]
+
+                Note that it is clear that $g_0(\theta)=\sin(\theta)$, $g_\pi(\theta)=-\sin(\theta)$, $g_{\pi/2}(\theta) = \cos(\theta)$, and $g_{-\pi/2}(\theta)=-\cos(\theta)$ so we can obtain any integer $\alpha,\beta$ by repeated addition of these elements.
+
+                Let $\tilde \alpha$ be the fractional part of $\alpha$ and $\tilde \beta$ be the fractional part of $\beta$.
+                If we can obtain any fractional part, then we are done and $\{\sin\theta, \cos\theta\}$ is a basis of $V$.
+
+                Let $0 \leqslant \tilde \alpha\leqslant 1$ and choose $\phi$ such that $\cos(\phi)=\tilde \alpha/2$.
+                Then
+                \[ g_\phi(\theta) + g_{-\phi}(\theta) = 2\cos\phi = \tilde \alpha. \]
+                Similarly, let $0 \leqslant \tilde \beta \leqslant 1$ and choose $\phi$ such that $\sin(\phi)=\tilde \beta/2$.
+                Then
+                \[ g_\phi(\theta) + g_{\pi-\phi}(\theta) = 2\sin\phi = \tilde \beta \]
+                as desired.
+
+        \end{enumerate}
+\end{solution}
+

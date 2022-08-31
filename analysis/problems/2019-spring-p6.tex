@@ -18,3 +18,16 @@
         where the last inequality comes from applying Holder's Inequality.
 \end{solution}
 
+\bigskip
+
+\begin{solution}{Kyle Chickering}
+	We have
+	\begin{align*}
+		u(x) - \overline{u} &= \int_0^1\,u(x)-u(y)\,dy \\
+                            &= \int_0^1\int_y^x\,u'(\eta)\,d\eta \tag{$W^{1,p}$ FTC (Brezis 8.2)} \\
+                            &\leqslant \int_0^1\int_y^x\,|u'(\eta)|\,d\eta \leqslant \int_0^1\int_0^1\,|u'(\eta)|\,d\eta \tag{sup $x$ and $y$} \\
+                            & = \norm{u'}_{L^1} \leqslant \norm{u'}_{L^2} \tag{H\"older's with $1$ and $u'$}
+	\end{align*}
+	sup over $x$ on both sides to obtain the inequality.
+\end{solution}
+

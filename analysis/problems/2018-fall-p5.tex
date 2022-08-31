@@ -1,0 +1,41 @@
+%! TeX root = ../analysis-main.tex
+
+\problem{5}{
+        Show that for any $u \in L^1(\reals^d)$,
+        \[ \lim_{h \to 0} \norm{ u(x + h) - u(x)}_{L^1(\reals^d)} = 0. \]
+}
+
+\begin{solution}{Kyle Chickering}
+	We begin by proving a well-known lemma for definiteness.
+
+	\textbf{Lemma:}
+    If $f\in L^1$ and $f_k\in L^1$ with $f_k\rightarrow f$ pointwise, then $\norm{f-f_k}_{L^1}\rightarrow 0$ as $k\rightarrow \infty$.
+	
+	\textit{Proof:}
+    Clearly $f-f_k\in L^1$.
+    We have $|f-f_k|\leqslant |f|-|f_k|$ so by dominated convergence
+    \[ \lim_{k\rightarrow \infty}\norm{f-f_k}_{L^1} = \norm{f-\lim_{k\rightarrow \infty}f_k}_{L^1} = 0. \]
+    $\blacksquare$
+
+	We now prove the proposition.
+    Since $C_0^\infty(\reals^d)$ dense in $L^1(\reals^d)$, let $\psi_k(x)\rightarrow u(x)$ as $k\rightarrow \infty$ for all $x\in \reals^d$.
+    Then by the lemma we have that $\norm{\phi_k-u}_{L^1}\rightarrow 0$ as $k\rightarrow 0$.
+    Furthermore, since $\psi_k$ is continuous $\psi_k(x+h)\rightarrow \psi_k(x)$ pointwise as $h\rightarrow 0$.
+    Consequently $\norm{\psi_k(x+h)-\psi_k(x)}_{L^1}\rightarrow 0$ as $h\rightarrow \infty$.
+    Finally, note that $\psi_k(x+h)\rightarrow u(x+h)$ by a simple change of variable and the translational invarience of the Lebesgue measure on $\reals^d$.
+
+	Let $\epsilon > 0$ be given and fix some $h\in \reals^d$.
+    Choose $k$ such that
+    \[ \norm{u(x+h)-\psi_k(x+h)}_{L^1} = \norm{\psi_k(x)-u(x)}_{L^1}< \epsilon. \]
+	Then we have that
+	\begin{align*}
+		\norm{u(x+h)-u(x)}_{L^1} &\leqslant \norm{u(x+h)-\psi_k(x+h)}_{L^1} + \norm{\psi_k(x+h)-\psi_k(x)}_{L^1} \\
+                                 &\qquad+ \norm{\psi_k(x)-u(x)}_{L^1} \\
+                                 &< 2\epsilon + \norm{\psi_k(x+h)-\psi_k(x)}_{L^1}.
+	\end{align*}
+	Taking the limit as $h\rightarrow 0$ of the above inequality we arrive at
+    \[ \lim_{h\rightarrow 0}\norm{u(x+h)-u(x)}_{L^1} < 2\epsilon \]
+	by the convergence of $\psi(x+h)$ to $\psi(x)$ in $L^1$.
+    Since $\epsilon > 0$ was arbitrary the result is immediate.
+\end{solution}
+

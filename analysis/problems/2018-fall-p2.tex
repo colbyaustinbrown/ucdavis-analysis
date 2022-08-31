@@ -33,3 +33,51 @@
         \[ |p_n(x)-p_n(y)| \leq |p_n(x)-f(x)|+|f(x)-f(y)|+|f(y)-p_n(y)| \leq 2 \left\lVert p_n-f \right\rVert +|f(x)-f(y)|<\epsilon \]
         Finally, since $p_1,\ldots,p_N$ are each uniformly continuous there exist corresponding $\delta_1,\ldots, \delta_N$ so $\delta_0 = \min\{\delta, \delta_1, \ldots, \delta_N\}$ works for all the $\{p_n\} \cup \{f\}$, hence the set is equicontinuous. 
 \end{solution}
+
+\bigskip
+
+\begin{solution}{Kyle Chickering}
+	\begin{enumerate}[label=(\alph*)]
+    \item
+        No. 
+        $f'(x)=\log x + 1$ on $(0,1]$, and $\lim_{x\rightarrow 0^+}f'(x) = -\infty$.
+        Suppose FSOC that $f$ is Lipschitz with Lipschitz constant $L$, then $|f(x)-f(y)|\leqslant L|x-y|$ for all $x,y\in [0,1]$.
+        Choose $x=0$, then we have
+        \[ \frac{|f(y)|}{y} \leqslant L \]
+        for all $y\in [0,1]$.
+        Choose $y=e^{L+1}$, then
+        \[ \frac{|e^{L+1}\log e^{L+1}|}{e^{L+1}}= L+1 > L \]
+		a contradiction.
+        Therefore $f$ is not Lipschitz.
+
+	\item 
+        Yes. 
+        We will show that $f$ is continuous, and therefore since $f$ is continuous on a compact set $[0,1]$, it is uniformly continuous on $[0,1]$ (Note that this is an explicit example of uniform continuity being weaker than Lipschitz continuity).
+
+		Clearly $x\log x$ is continuous on $(0,1]$ since the product of two continuous functions is continuous.
+        By L'Hopital's rule
+        \[ \lim_{x\rightarrow 0^+}\frac{\log x}{1/x} = \lim_{x\rightarrow 0^+}x = 0 \]
+		so $f$ is continuous on $[0,1]$.
+
+	\item 
+        Yes. 
+        Let $\epsilon>0$, $x\in [0,1]$ be given and choose $\delta>0$ such that $|f(x)-f(y)| < \epsilon/3 < \epsilon$ whenever $|x-y|<\delta$.
+        We will show that $|p_k(x)-p_k(y)|<\epsilon$ whenever $|x-y|<\delta$, for all $k$.
+        Choose $N\in \naturals$ such that
+        \[ \norm{p_k-f}_{L^\infty}<\frac{\epsilon}{3} \quad \Longrightarrow \quad |p_k(x)-f(x)| < \frac{\epsilon}{3}. \]
+        for all $x\in [0,1]$ whenever $k \geqslant N$.
+        We set
+        \[ A_N:=\{p_k \mid k<N\} \subset A. \]
+		It is clear that $A_N$ is equicontinuous since it is a finite collection of uniformly continuous functions (take the infimum of the $\delta$'s).
+        Because of this it is clear that if $A\setminus A_N$ is equicontinuous, then so is $A$.
+        WLOG we assume $N$ above is 1 and $A_N=\varnothing$.
+
+		We have
+		\begin{align*}
+			|p_k(x)-p_k(y)| &\leqslant |p_k(x)-f(x)| + |f(x)-f(y)| + |f(y)-p_k(y)| \\
+                            &< \frac{\epsilon}{3} + \frac{\epsilon}{3} + \frac{\epsilon}{3} = \epsilon
+		\end{align*}
+		whenever $|x-y|<\epsilon$ as desired. Therefore $A$ is equicontinuous.
+	\end{enumerate}
+\end{solution}
+

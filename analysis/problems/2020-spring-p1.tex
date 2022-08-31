@@ -1,0 +1,62 @@
+%! TeX root = ../analysis-main.tex
+
+\problem{1}{
+        Let $f\in \mathcal{S}(\reals)$ be a Schwartz function.
+        Suppose $\int_{\reals}\,f(y)e^{-y^2}e^{2xy}\,dy =0$ for all $x\in \reals$, show that $f\equiv 0$.
+}
+
+\begin{solution}{Kyle Chickering}
+        We begin by proving a small lemma.
+
+        \textbf{(Convolution Preserves Pariety)} 
+        Let $f\in \mathcal{S}(\reals)$, be even, and let $K\in L^1(\reals)\cap C^\infty(\reals)$ be even, then
+        \begin{align*}
+        (f*K)(x) &= \int_{\reals}\,f(y)K(x-y)\,dy = \int_{\reals}\,f(-y)K(x-y)\,dy \\
+             &= \int_{\reals}\,f(y)K(x+y)\,dy =\int_{\reals}\,f(y)K((-x)-y)\,dy \\
+             &=(f*K)(-x)
+        \end{align*}
+        let $f$ be even with the same hypothesis on $K$, then
+        \begin{align*}
+        (f*K)(x) &= \int_{\reals}\,f(y)K(x-y)\,dy =
+               -\int_{\reals}\,f(-y)K(x-y)\,dy \\
+             &= -\int_{\reals}\,f(y)K(x+y)\,dy =
+               -\int_{\reals}\,f(y)K((-x)-y)\,dy \\
+             &=-(f*K)(-x)
+        \end{align*}
+        as desired. $\square$
+
+        Next recall the following facts
+        \begin{enumerate}[label=(\roman*)]
+                \item
+                        \[ \int_{\reals}\,e^{-x^2}\,dx = \sqrt{\pi} \]
+
+                \item 
+                        For $f\in \mathcal{S}(\reals)$, the Fourier inversion formula says
+                        \[ f(x) = \int_{\reals}\,\hat{f}(\xi)e^{-2\pi i x \xi}\,d\xi  \]
+
+                \item
+                        \[ \widehat{(f*g)}(\xi) = \hat{f}(\xi)\hat{g}(\xi) \]
+
+                \item
+                        \[ (e^{-\pi^2\xi^2})^{\vee}=\frac{1}{\sqrt{\pi}}e^{-x^2} \]
+        \end{enumerate}
+
+        We are now ready to solve our problem. We have
+        \begin{align*}
+                \int_{\reals}\,f(y)e^{2xy}e^{-y^2}\,dy
+                &= \int_{\reals}\int_{\reals}\,\hat{f}(\xi)e^{2\pi i y \xi + 2xy
+                -y^2}\,d\xi \, dy \tag{\text{ii}} \\
+                &= \int_{\reals}\hat{f}(\xi)\int_{\reals}\,e^{2\pi i y \xi + 2xy
+                -y^2}\,dy \, d\xi \tag{\text{Fubini}} \\
+                &= e^{x^2}\int_{\reals}\,\hat{f}(\xi)e^{-\pi^2\xi^2}e^{2\pi i
+                x\xi}\int_{\reals}\,e^{-(y-(\pi i \xi+x))^2}\,dy\,d\xi
+                \tag{\text{Complete Square}} \\
+                &=\sqrt{\pi}e^{x^2}\int_{\reals}\,\hat{f}(\xi)e^{-\pi^2\xi^2}e^{2\pi i
+                x\xi}\,d\xi \tag{\text{i}} \\
+                &= \sqrt{\pi}e^{x^2}(f*\frac{1}{\sqrt{\pi}}e^{-x^2})(x) = 0
+                \tag{\text{iii}}
+        \end{align*}
+        which implies that $(f*e^{-x^2})(x)=0$.
+        By (iv) we see that $f$ is both even and odd, and hence $f=0$.
+\end{solution}
+

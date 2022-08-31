@@ -1,0 +1,48 @@
+%! TeX root = ../analysis-main.tex
+
+\problem{6}{
+				Find a sequence $\{f_k\}$ of continuous functions on $\reals$ such that it is uniformly bounded and equicontinuous but fails to have a subsequence that converges uniformly on $\reals$.
+}
+
+\begin{solution}{Kyle Chickering}
+	Let
+	\begin{align*}
+		f_k(x) = \begin{cases}
+			0 & x \leqslant k \\
+			x-k & k<x\leqslant k+1 \\
+			1 & k + 1 < x.
+		\end{cases}
+	\end{align*}
+	It is clear that each $f_k$ is continuous, and it is also easy to see that that $\{f_k\}$ is uniformly bounded by 1, since $|f_k(x)|\leqslant 1$ for all $x\in \reals$.
+
+	We show that $\{f_k\}$ is equi-continuous.
+    Given $\epsilon > 0$, choose $0 < \delta < \epsilon$. For $x, y$, $|x-y|<\delta$, $x < y$, we have the following cases.
+	\begin{itemize}
+            \item 
+                $(x, y)\cap (k, k+1) = \varnothing$.
+                In this case $|f_k(x)-f_k(y)|=0<\epsilon$.
+
+            \item 
+                $(x,y)\subset (k, k+1)$
+                In this case we have
+                \[ |f_k(x)-f_k(y)|=|x-k-y+k| = |x-y|<\delta < \epsilon. \]
+
+            \item 
+                $(x,y) \not\subset (k, k+1)$ and $(x,y)\cap (k, k+1)\ne \varnothing$.
+
+                We have two further sub cases. First, suppose $f_k(y)=1$, then $f_k(x)=x-k$ and $k<y<k+1$ which means
+                \[ |f_k(x)-f_k(y)|=|x-k-1| < |x-y| < \delta < \epsilon \]
+
+                Next, suppose $f_k(y)=y-k$, then $f_k(x)=0$ and $k \leqslant y < k+1$ and we have that
+                \[ |f_k(x)-f_k(y)| = |k-y| \leqslant |x-y|<\delta < \epsilon. \]
+    \end{itemize}
+	This proves that $\{f_k\}$ is equicontinuous.
+
+	Next note that $f_k(x)\rightarrow 0$ as $k\rightarrow \infty$ for all $x\in \reals$ since for any $x$, $f_k(x)=0$ for all $k>x$.
+
+	Choose any subsequence $f_j$ of $\{f_k\}$ and suppose for the sake of contradiction that $f_j$ converges uniformly.
+    Then for every $\epsilon > 0$ we have that $|f_j(x)|<\epsilon$ for all $x\in \reals$, $j\geqslant J$ for some $J\in \naturals$.
+    However it is easy to see that if we choose $x>j$, $|f_j(x)|=1$ and hence $|f_j(x)|\not < \epsilon$ in general.
+    Since $\{f_j\}$ was an arbitrary subsequence, no subsequence converges uniformly.
+\end{solution}
+

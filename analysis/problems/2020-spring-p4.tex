@@ -1,0 +1,43 @@
+%! TeX root = ../analysis-main.tex
+
+\problem{4}{
+        Suppose that $f\in L^2(\reals)$ and $\hat{f}$ is continuous.
+        Suppose that $\hat{f}=\mathcal{O}(|\xi|^{-1-\alpha})$ as $|\xi| \to \infty$.
+        Show that $|f(x+h)-f(x)|\leqslant Ch^\alpha$ for all $h>0$ and some constant $C$ independent of $h$.
+}
+
+\begin{solution}{Kyle Chickering}
+        We apply the inversion formula
+        \[ \frac{f(x+h)-f(x)}{h^\alpha} = \frac{1}{h^\alpha}\int_{\reals}\,\hat{f}(\xi)e^{2\pi i x\xi}(e^{2\pi ih\xi} - 1)\,d\xi. \]
+
+        We estimate
+        \begin{align*}
+                \frac{|e^{2\pi i h \xi}-1|}{h^\alpha} &= \left(\frac{|e^{2\pi i h\xi}-1|}{h}\right)^{\alpha}|e^{2\pi i h \xi}-1|^{1-\alpha} \\
+                \leqslant 2^{1-\alpha}\left(\frac{|e^{2\pi i h \xi}-1|}{h}\right)^{\alpha}
+        \end{align*}
+        since $|e^{2\pi i x h}-1|\leqslant 2$.
+
+        By the mean value theorem we have that
+        \[ |e^{2\pi i h \xi}-1|\leqslant 2\pi |\xi||e^{2\pi i \eta \xi}|h \leqslant 2\pi h |\xi| \]
+        where $0<\eta < h$.
+
+        Combining the above two estimates shows that
+        \[ \frac{|e^{2\pi i h \xi}-1|}{h^\alpha} \leqslant \min\left\{2\pi^\alpha|\xi|^\alpha, 2/h^\alpha\right\}. \]
+
+        Note that whenever $|\xi|<1/(\pi h)$, $2\pi^\alpha|\xi|^\alpha < 2$.
+
+        Recall that $\hat{f}(\xi)=\mathcal{O}(|\xi|^{-1-\alpha})$ means that there exist constants $M,B\in \reals^{>0}$ such that whenever $|\xi|>M$, $|\hat{f}(\xi)|\leqslant B|\xi|^{-1-\alpha}$.
+
+        Choose $N=\max{M,1/(\pi h)}$, then we estimate
+        \begin{align*}
+                \left|\int_{\reals}\,\hat{f}(\xi)e^{2\pi i x\xi}\frac{(e^{2\pi ih\xi}-1)}{h^\alpha}\d,\xi\right| &\leqslant \left|\left(\int_{|\xi|<N}+\int_{|\xi|>N}\right)\, \hat{f}(\xi)e^{2\pi i x\xi}\frac{(e^{2\pi i h\xi}-1)}{h^\alpha}\,d\xi\right| \\
+                                                                                                             &\leqslant 2\pi^\alpha \int_{|\xi|<N}|\hat{f}(\xi)|\xi|^\alpha\,d\xi +\frac{2B}{h^\alpha}\int_{|\xi|\geqslant N}|\xi|^{-1-\alpha}\,d\xi \\
+                                                                                                             &\leqslant 4\pi^\alpha N^\alpha \left(\int_{|\xi|<N}\,d\xi\right)^{1/2}\norm{\hat{f}}_{L^2(\reals)} + \frac{4}{h^\alpha}N^{-\alpha}B \\
+                                                                                                             &= 4\pi^\alpha N(2N)^{1/2}\norm{f}_{L^1(\reals)} + \frac{4}{h^\alpha}N^{-\alpha}B
+        \end{align*}
+
+        By our choice of $N$ we have $N^{-\alpha} \leqslant \pi^\alpha h^\alpha$ so that we have shown
+        \[ \frac{f(x+h)-f(x)}{h^\alpha} \leqslant 2^{5/2}\pi^\alpha M^{3/2}\norm{f}_{L^2(\reals)} + 4\pi^\alpha B =: C \]
+        as desired.
+\end{solution}
+
